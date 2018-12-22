@@ -22,12 +22,14 @@ extern uint8_t is_master;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _QWERTY 0
+#define _MACOS 1
 #define _LOWER 3
 #define _RAISE 4
 #define _ADJUST 16
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
+  MACOS,
   LOWER,
   RAISE,
   ADJUST,
@@ -39,23 +41,25 @@ enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
 
-#define KC______ KC_TRNS
-#define KC_XXXXX KC_NO
-#define KC_LOWER LOWER
-#define KC_RAISE RAISE
-#define KC_RST   RESET
-#define KC_LRST  RGBRST
-#define KC_LTOG  RGB_TOG
-#define KC_LHUI  RGB_HUI
-#define KC_LHUD  RGB_HUD
-#define KC_LSAI  RGB_SAI
-#define KC_LSAD  RGB_SAD
-#define KC_LVAI  RGB_VAI
-#define KC_LVAD  RGB_VAD
-#define KC_LMOD  RGB_MOD
-#define KC_CTLTB CTL_T(KC_TAB)
-#define KC_GUIEI GUI_T(KC_LANG2)
-#define KC_ALTKN ALT_T(KC_LANG1)
+#define KC______  KC_TRNS
+#define KC_XXXXX  KC_NO
+#define KC_QWERTY QWERTY
+#define KC_MACOS  MACOS
+#define KC_LOWER  LOWER
+#define KC_RAISE  RAISE
+#define KC_RST    RESET
+#define KC_LRST   RGBRST
+#define KC_LTOG   RGB_TOG
+#define KC_LHUI   RGB_HUI
+#define KC_LHUD   RGB_HUD
+#define KC_LSAI   RGB_SAI
+#define KC_LSAD   RGB_SAD
+#define KC_LVAI   RGB_VAI
+#define KC_LVAD   RGB_VAD
+#define KC_LMOD   RGB_MOD
+#define KC_CTLTB  CTL_T(KC_TAB)
+#define KC_GUIEI  GUI_T(KC_LANG2)
+#define KC_ALTKN  ALT_T(KC_LANG1)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_kc( \
@@ -66,13 +70,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
        LSFT,     Z,     X,     C,     V,     B,                      N,     M,  COMM,   DOT,  SLSH,  RSFT,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                  GUIEI,  LCTL,   SPC,      SPC, LOWER,RAISE \
+                                  GUIEI,  LCTL,   SPC,      SPC, LOWER, RAISE \
+                              //`--------------------'  `--------------------'
+  ),
+
+  [_MACOS] = LAYOUT_kc( \
+  //,-----------------------------------------.                ,-----------------------------------------.
+        TAB,     Q,     W,     E,     R,     T,                      Y,     U,     I,     O,     P,  BSPC,\
+  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
+        ESC,     A,     S,     D,     F,     G,                      H,     J,     K,     L,  SCLN,   ENT,\
+  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
+       LSFT,     Z,     X,     C,     V,     B,                      N,     M,  COMM,   DOT,  SLSH,  RSFT,\
+  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
+                                   LCTL, GUIEI,   SPC,      SPC, LOWER, RAISE \
                               //`--------------------'  `--------------------'
   ),
 
   [_LOWER] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-        TAB, GRAVE, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, MINUS, EQUAL,  BSPC,\
+        TAB, GRAVE, XXXXX, XXXXX, MACOS,QWERTY,                  XXXXX, XXXXX, XXXXX, MINUS, EQUAL,  BSPC,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
         ESC, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX,  LBRC,  RBRC,  BSLS,   ENT,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
@@ -91,6 +107,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        LSFT,    F1,    F2,    F3,    F4,    F5,                     F6,    F7,    F8,    F9,   F10,  RSFT,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   GUIEI,  LCTL,   SPC,      SPC, XXXXX, XXXXX \
+                              //`--------------------'  `--------------------'
+  ),
+
+  [_ADJUST] = LAYOUT_kc( \
+  //,-----------------------------------------.                ,-----------------------------------------.
+      XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
+  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
+      XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
+  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
+      XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
+  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
+                                  XXXXX, XXXXX, XXXXX,    XXXXX, XXXXX, XXXXX \
                               //`--------------------'  `--------------------'
   )
 };
@@ -181,6 +209,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case QWERTY:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_QWERTY);
+      }
+      return false;
+      break;
+    case MACOS:
+      if (record->event.pressed) {
+        persistent_default_layer_set(1UL<<_MACOS);
       }
       return false;
       break;
