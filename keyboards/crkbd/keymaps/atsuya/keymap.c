@@ -157,11 +157,7 @@ void matrix_scan_user(void) {
 }
 
 void matrix_render_user(struct CharacterMatrix *matrix) {
-  if (is_master) {
-    matrix_write(matrix, read_logo());
-  } else {
-    matrix_write(matrix, read_logo());
-  }
+  matrix_write(matrix, read_logo());
 }
 
 void matrix_update(struct CharacterMatrix *dest, const struct CharacterMatrix *source) {
@@ -182,7 +178,7 @@ void iota_gfx_task_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef SSD1306OLED
-    set_keylog(keycode, record);
+    //set_keylog(keycode, record);
 #endif
     // set_timelog();
   }
