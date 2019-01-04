@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-        TAB, GRAVE, XXXXX, XXXXX, MACOS,QWERTY,                  XXXXX, XXXXX, XXXXX, MINUS, EQUAL,  BSPC,\
+        TAB, GRAVE, XXXXX, XXXXX, XXXXX, XXXXX,                  MACOS,QWERTY, XXXXX, MINUS, EQUAL,  BSPC,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
         ESC, XXXXX,  MS_L,  MS_D,  MS_U,  MS_R,                  XXXXX, XXXXX,  LBRC,  RBRC,  BSLS,   ENT,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
