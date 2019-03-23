@@ -44,10 +44,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 17
 
 // Mouse key
-#define MOUSEKEY_DELAY             300
-#define MOUSEKEY_INTERVAL          10
-#define MOUSEKEY_MAX_SPEED         5
-#define MOUSEKEY_TIME_TO_MAX       20
+#define MOUSEKEY_DELAY             30
+#define MOUSEKEY_INTERVAL          40
+#define MOUSEKEY_MAX_SPEED         6
+#define MOUSEKEY_TIME_TO_MAX       5
 #define MOUSEKEY_WHEEL_MAX_SPEED   8
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 40
 
